@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+const chalk = require("chalk");
+const fs = require("fs");
 const path = require("path");
-
-const klawSync = require("klaw-sync");
 
 const rebuildPackageJson = require("./rebuildPackageJson");
 
@@ -12,30 +12,21 @@ const Application = function() {
   this.runawayBinDirectory = path.join(this.runawayDirectory, ".bin");
   this.commands = [];
 
-  // TODO: Check if .runaway/ exists.
+  // Need to make sure the .runaway directory exists.
+  if (!fs.existsSync(this.runawayDirectory)) {
+    console.log(
+      chalk.red(".runaway/ doesn't exist.") + " Did you run runaway --init ?"
+    );
+    return;
+  }
 
-  const files = klawSync(this.runawayDirectory, { nodir: true });
+  let argv = require("minimist")(process.argv.slice(2));
 
-  files.forEach(file => {
-    if (
-      path.basename(path.relative(file.path, this.runawayBinDirectory)) ===
-      ".bin"
-    ) {
-      const command = require(file.path);
-
-      if (!command.name) {
-        // TODO: Make machine-safe
-        command.name = path.basename(file.path, path.extname(file.path));
-      }
-
-      this.commands.push(command);
-    }
-  });
-
-  var argv = require("minimist")(process.argv.slice(2));
-
-  if (argv["rebuild-packagejson"]) {
+  if (argv["rebuild"]) {
     rebuildPackageJson.call(this);
+  }
+  else {
+    console.log(fs.readFileSync(path.join(__dirname, "help.txt")).toString());
   }
 };
 
