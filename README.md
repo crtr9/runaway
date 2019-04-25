@@ -1,4 +1,3 @@
-# New Document
 # Runaway! - NPM Scripts Manager
   
 ## Overview  
@@ -21,25 +20,31 @@ npm install --save-dev runaway
 Or Yarn.  If you're using Yarn, I'm sure you already know what to do. :)  
   
   
-# .runaway/  
-  
-In the root of your project, you'll want to create a `.runaway/` folder.  
-  
-```  
-<your-project-directory>/
-    src/ package.json     .runaway/  <-- This one right here.  
-```  
-  
-Presuming you want to make a command called `build` you'd now create a   
-`build.js` file inside `.runaway/`  
+# .runaway/
+
+*Runaway!* asks that you organize your command files in a `.runaway/` folder in the root of your project.
+
+Command files are simple.  At their minimum, they're expected to expose an object with a `command` property.
   
 ```  
 <your-project-directory>/
-    .runaway/ build.js
+    src/
+    package.json
+    
+    .runaway/  <-- This one right here.  
 ```  
   
-In that `build.js` file, you want to export an object that has a string   
-`command` property:  
+Presuming you want to make a command called `build` you'll now create a `build.js` file inside `.runaway/`  
+  
+```  
+<your-project-directory>/
+    ...
+
+    .runaway/
+        build.js
+```  
+  
+In that `build.js` file, you want to export an object that has a string `command` property:  
   
 > **.runaway/build.js**
 > ```javascript  
@@ -53,28 +58,22 @@ That's it.  Now we have to rebuild the `package.json`
   
 # Rebuilding `package.json`  
   
-Unfortunately `package.json` is a JSON file and we can't actually crawl the   
-`.runaway/` directory automatically.  If it were `package.js` we certainly could   
-and that'd be great, but... Carry on.  
+Unfortunately `package.json` is a JSON file and we can't actually crawl the `.runaway/` directory automatically.  If it were `package.js` we certainly could and that'd be great, but... Carry on.  
   
-Instead, *Runaway!* provides a command for rebuilding the `package.json` based   
-off what it finds in `.runaway/`.  That command is as follows:  
+Instead, *Runaway!* provides a command for rebuilding the `package.json` based off what it finds in `.runaway/`.  That command is as follows:  
   
 ```
 npx runaway --rebuild
 ```
   
-Now if you open up your `package.json` you should see the `scripts: {}` section   
-reflect what's in `.runaway/`.  
+Now if you open up your `package.json` you should see the `scripts: {}` section reflect what's in `.runaway/`.  
   
 > Note that the name of the command that ends up in `package.json` matches the name of the file.  You're able to specify a specific name for the command with the `name` property.  
   
   
 # .runaway/.bin  
   
-Often you need to write small scripts that do fairly custom things in your   
-build process.  There's no reason you couldn't just write a runaway command   
-like:  
+Often you need to write small scripts that do fairly custom things in your build process.  There's no reason you couldn't just write a runaway command like:  
   
 > **.runaway/build.js**
 > ```javascript  
@@ -83,11 +82,9 @@ like:
 > }  
 > ```  
   
-But you've already started organizing your "build stuff" in `.runaway/` so why   
-not those custom scripts too?  
+But you've already started organizing your "build stuff" in `.runaway/` so why not those custom scripts too?  
   
-Make a new directory `.bin/` inside the `.runaway/` directory, and move your   
-`my-custom-script.js` into it.  
+Make a new directory `.bin/` inside the `.runaway/` directory, and move your `my-custom-script.js` into it.  
   
 ```
 <your-project-directory>/
@@ -103,9 +100,6 @@ Now you can change your script command:
 > }  
 > ```  
   
-When you run `npx runaway --rebuild`, `runaway` will replace   
-"runaway!" with `node .runaway/.bin/`  
+When you run `npx runaway --rebuild`, `runaway` will replace "runaway!" with `node .runaway/.bin/`  
   
-Is this necessary?  Absolutely not.  But it's nice to be able to easily spot   
-"runaway!" and understand that there's some fancier-than-usual stuff going on   
-with whatever your build script is.
+Is this necessary?  Absolutely not.  But it's nice to be able to easily spot "runaway!" and understand that there's some fancier-than-usual stuff going on with whatever your build script is.
