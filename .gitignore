@@ -4,3 +4,7 @@
 /.idea/*.iws
 /.idea/workspace.xml
 /.idea/tasks.xml
+
+/example/node_modules/
+/example/src/*.css
+/example/src/*.js
