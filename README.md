@@ -25,7 +25,9 @@ does is rewrite the `scripts: {}` section of your `package.json` based on the
 
 # Installation
 
-`npm install --save-dev runaway`
+```
+npm install --save-dev runaway
+```
 
 Or Yarn.  If you're using Yarn, I'm sure you already know what to do. :)
 
