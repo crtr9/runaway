@@ -1,0 +1,7 @@
+Usage:
+> runaway --rebuild
+    Scans the .runaway/ directory of your project and regenerates package.json scripts based on findings.
+
+Commands:
+  --rebuild
+  --help

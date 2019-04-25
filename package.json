@@ -9,6 +9,7 @@
   "author": "Derek McTavish Mounce <derek@mounce.wtf>",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^2.4.2",
     "klaw-sync": "^6.0.0",
     "minimist": "^1.2.0"
   },
