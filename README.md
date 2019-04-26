@@ -62,6 +62,7 @@ npx runaway --init
 
 This will create the `.runaway/` and `.runaway/.bin`directory and initialize a sample command file and .bin script.  Depending on your learning style, you can jump in and take a look at those files or you can continue reading the docs.
 
+Also, you can go take a look in the `example/` directory for a slightly more involved example than what `--init` sets you up with.
 
 
 # Documentation
@@ -96,15 +97,15 @@ Does what you'd expect.
 
 *Runaway!* asks that you organize your command files in a `.runaway/` folder in the root of your project.
 
-Command files are simple.  At their minimum, they're expected to expose an object with a `command` property.
-
-```  
+```
 <your-project-directory>/
-		src/
+    src/
     package.json
     
     .runaway/  <-- This one right here.  
 ```
+
+Command files are simple.  At their minimum, they're expected to expose an object with a `command` property.
 
 Presuming you want to make a command called `build` you'll now create a `build.js` file inside `.runaway/`  
 
