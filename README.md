@@ -1,4 +1,4 @@
-# *Runaway!* - NPM Scripts Manager
+# :ghost: *Runaway!* - NPM Scripts Manager
 
 Foregoing the use of a full-featured task-runner for developing JS applications in favor of simple npm scripts is becoming more and more common.  For good reason: *it's simple.*  
 
