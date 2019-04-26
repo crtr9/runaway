@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm-run-all clean parallel-build",
     "clean": "node .runaway/.bin/clean.js",
-    "parallel-build": "npm-run-all -p scss typescript",
+    "build/parallel": "npm-run-all -p scss typescript",
     "scss": "node-sass src/style.scss -o src/",
     "typescript": "tsc src/main.ts"
   },
