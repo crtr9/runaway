@@ -107,14 +107,14 @@ Does what you'd expect.
 
 Command files are simple.  At their minimum, they're expected to expose an object with a `command` property.
 
-Presuming you want to make a command called `build` you'll now create a `build.js` file inside `.runaway/`  
+Presuming you want to make a command called `npm run build` (`or yarn build`) you'd create a `build.js` file inside `.runaway/`  
 
 ```  
 <your-project-directory>/
     ...
 
     .runaway/
-        build.js
+        **build.js**
 ```
 
 In that `build.js` file, you want to export an object that has a string `command` property:  
