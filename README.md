@@ -124,7 +124,7 @@ Presuming you want to make a command called `npm run build` (`or yarn build`) yo
 > **.runaway/build.js**
 > ```javascript  
 > module.exports = {
->     command: "babel src/main.js"  
+>     command: "tsc src/main.js"  
 > };  
 > ```
 
@@ -149,8 +149,8 @@ The name of the command that ends up in `package.json` matches the name of the f
 > **.runaway/build.js**
 > ```javascript  
 > module.exports = {
->     command: "babel src/main.js",
->     name: "build/babel"
+>     command: "tsc src/main.js",
+>     name: "build/typescript"
 > };  
 > ```
 
