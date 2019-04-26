@@ -114,7 +114,7 @@ Presuming you want to make a command called `npm run build` (`or yarn build`) yo
     ...
 
     .runaway/
-        **build.js**
+        build.js
 ```
 
 In that `build.js` file, you want to export an object that has a string `command` property:  
