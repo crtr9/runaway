@@ -18,10 +18,7 @@ By organizing your script commands in individual `.js` files, you're able to pro
 >   "scripts": {}
 > }
 > ```
-
-(Yes, it's a bit of a contrived example, what with being empty.)
-
-
+> (Yes, it's a bit of a contrived example, what with being empty.)
 
 > **./runaway/build.js**
 > ```javascript
@@ -30,15 +27,10 @@ By organizing your script commands in individual `.js` files, you're able to pro
 > };
 > ```
 
-
-
-Now we run *Runaway!*
-
-```
-npx runaway --rebuild
-```
-
-
+> Now we run *Runaway!*
+> ```
+> npx runaway --rebuild
+> ```
 
 > Partial **package.json** after *Runningaway!* (See what I did there?)
 > ```json
@@ -48,7 +40,6 @@ npx runaway --rebuild
 >   }
 > }
 > ```
-
 
 
 # Getting Started
