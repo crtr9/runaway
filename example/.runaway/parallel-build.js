@@ -1,3 +1,4 @@
 module.exports = {
-  command: "npm-run-all -p scss typescript"
+  command: "npm-run-all -p scss typescript",
+  name: "build/parallel"
 };

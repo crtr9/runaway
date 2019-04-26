@@ -69,6 +69,8 @@ Also, you can go take a look in the `example/` directory for a slightly more inv
 
 - [Available Commands/Options](#available-commandsoptions)
 - [The `.runaway/` directory](#runaway-directory)
+- [Rebuilding `package.json`](#rebuilding-packagejson)
+  - [Command Names](#a-note-on-command-names)
 - [The `.runaway/.bin` directory](#runaway-bin-directory)
 
 
@@ -117,7 +119,7 @@ Presuming you want to make a command called `npm run build` (`or yarn build`) yo
         build.js
 ```
 
-In that `build.js` file, you want to export an object that has a string `command` property:  
+`build.js` needs to export an object that has a string `command` property representing what gets put into your `package.json`
 
 > **.runaway/build.js**
 > ```javascript  
@@ -126,46 +128,54 @@ In that `build.js` file, you want to export an object that has a string `command
 > };  
 > ```
 
-That's it.  Now we have to rebuild the `package.json`
-
 ## Rebuilding `package.json`  
 
-Unfortunately `package.json` is a JSON file and we can't actually crawl the `.runaway/` directory automatically.  If it were `package.js` we certainly could and that'd be great, but... Carry on.  
+Unfortunately `package.json` is a JSON file and we can't crawl the `.runaway/` directory automatically.  If it were `package.js` we certainly could, and that'd be great because doing so would eliminate the `--rebuild` command, but as I'm sure you know by now, the world is against you -- it's a scary place.  That why you have to... (yes, I'm doing it) *Runaway!* :grimacing: :woman_facepalming:
 
-Instead, *Runaway!* provides a command for rebuilding the `package.json` based off what it finds in `.runaway/`.  That command is as follows:  
+Since that happened... *Runaway!* provides a command for rebuilding the `package.json` based off what it finds in `.runaway/`.  That command is as follows:  
 
 ```
 npx runaway --rebuild
 ```
 
-Now if you open up your `package.json` you should see the `scripts: {}` section reflect what's in `.runaway/`.  
+> The need to run `--rebuild` means that whenever you change or add command files, you'll have to rerun `--rebuild`.  Again, yes, it's less than ideal.  Maybe it's possible to hook into `npm run` and run rebuild automatically?  If y'all know anything about this, make a PR or log an issue, that way we can remove this entire documentation section which also means the pun will disappear as well.
 
-> Note that the name of the command that ends up in `package.json` matches the name of the file.  You're able to specify a specific name for the command with the `name` property.  
+After running `--rebuild` if you open up your `package.json` you should see the `scripts: {}` section reflect what's in `.runaway/`.  
 
+### A note on command names
 
+The name of the command that ends up in `package.json` matches the name of the file that supplied it.  `build.js` turns into `npm run build`.  If you're not a fan of this, you're able to specify a specific name for the command with the `name` property.
+
+> **.runaway/build.js**
+> ```javascript  
+> module.exports = {
+>     command: "babel src/main.js",
+>     name: "build/babel"
+> };  
+> ```
 
 ## `.runaway/.bin` Directory
 
-Often you need to write small scripts that do fairly custom things in your build process.  There's no reason you couldn't just write a runaway command like:  
+Often you need to write small scripts that do fairly specific things for your build process.  There's no reason you couldn't just write a command like:  
 
-> **.runaway/build.js**
+> **.runaway/do-something.js**
 > ```javascript  
 > module.exports = {
 >     command: "node build-utils/my-custom-script.js"  
 > }  
 > ```
 
-But you've already started organizing your "build stuff" in `.runaway/` so why not those custom scripts too?  
+But you've already organized your "build stuff" in `.runaway/` so why not those custom scripts too?  
 
-Make a new directory `.bin/` inside the `.runaway/` directory, and move your `my-custom-script.js` into it.  
+*Runaway!* supports calling custom scripts in the `.runaway/.bin/` directory with a nice little shorthand syntax.
 
-```
-<your-project-directory>/
-    .runaway/ .bin/my-custom-script.js
-```
+Make a new directory `.bin/` inside the `.runaway/` directory, and move your `my-custom-script.js` into it.
+> ```
+> <your-project-directory>/
+>     .runaway/ .bin/my-custom-script.js
+> ```
 
 Now you can change your script command:  
-
 > **.runaway/build.js**
 > ```javascript
 > module.exports = {
@@ -173,6 +183,6 @@ Now you can change your script command:
 > }  
 > ```
 
-When you run `npx runaway --rebuild`, `runaway` will replace "runaway!" with `node .runaway/.bin/`  
+When you `--rebuild`, *Runaway!* will replace "runaway!" with `node .runaway/.bin/`  
 
-Is this necessary?  Absolutely not.  But it's nice to be able to easily spot "runaway!" and understand that there's some fancier-than-usual stuff going on with whatever your build script is.
+Is this necessary?  Absolutely not.  But it's nice.
