@@ -1,7 +1,5 @@
 # Runaway! - NPM Scripts Manager
 
-[TOC]
-
 Foregoing the use of a full-featured task-runner for developing JS applications in favor of simple npm scripts is becoming more and more common.  For good reason: *it's simple.*  
 
 **The Problem:** Any reasonably sized project ends up needing a lot of script commands to lint, build, transpile, optimize, etc., etc.  Having an undocumented list of commands in your `package.json` quickly becomes cumbersome.  
@@ -80,7 +78,7 @@ This will create the `.runaway/` and `.runaway/.bin`directory and initialize a s
 
 # Documentation
 
-- [Available Commands/Options](#available-commands-options)
+- [Available Commands/Options](#available-commandsoptions)
 - [The `.runaway/` directory](#runaway-directory)
 - [The `.runaway/.bin` directory](#runaway-bin-directory)
 
