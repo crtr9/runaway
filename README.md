@@ -71,7 +71,7 @@ Also, you can go take a look in the `example/` directory for a slightly more inv
 - [The `.runaway/` directory](#runaway-directory)
 - [Rebuilding `package.json`](#rebuilding-packagejson)
   - [Command Names](#a-note-on-command-names)
-- [The `.runaway/.bin` directory](#runaway-bin-directory)
+- [The `.runaway/.bin` directory](#runawaybin-directory)
 
 
 
