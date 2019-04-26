@@ -91,6 +91,7 @@ This will create the `.runaway/` and `.runaway/.bin`directory and initialize a s
 Command files are simple.  At their minimum, they're expected to expose an object with a `command` property.
 
 ```  
+
 <your-project-directory>/
 		src/
     package.json
@@ -101,6 +102,7 @@ Command files are simple.  At their minimum, they're expected to expose an objec
 Presuming you want to make a command called `build` you'll now create a `build.js` file inside `.runaway/`  
 
 ```  
+
 <your-project-directory>/
     ...
 
