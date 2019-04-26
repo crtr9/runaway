@@ -6,6 +6,9 @@
   "bin": {
     "runaway": "./index.js"
   },
+  "scripts": {
+    "lint": "prettylint index.js initRunaway.js rebuildPackageJson.js"
+  },
   "author": "Derek McTavish Mounce <derek@mounce.wtf>",
   "license": "MIT",
   "dependencies": {
@@ -14,6 +17,7 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "prettylint": "^1.0.0"
   }
 }

@@ -31,9 +31,7 @@ module.exports = function() {
 
       if (!command.command) {
         console.log(
-          chalk.red(
-            `${file.path} doesn't expose a command property!`
-          )
+          chalk.red(`${file.path} doesn't expose a command property!`)
         );
 
         console.log("\n" + chalk.bgRed("Rebuild aborted!"));

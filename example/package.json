@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all clean parallel-build",
+    "build": "npm-run-all clean build/parallel",
     "clean": "node .runaway/.bin/clean.js",
     "build/parallel": "npm-run-all -p scss typescript",
     "scss": "node-sass src/style.scss -o src/",
