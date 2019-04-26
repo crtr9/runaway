@@ -138,7 +138,7 @@ Since that happened... *Runaway!* provides a command for rebuilding the `package
 npx runaway --rebuild
 ```
 
-> The need to run `--rebuild` means that whenever you change or add command files, you'll have to rerun `--rebuild`.  Again, yes, it's less than ideal.  Maybe it's possible to hook into `npm run` and run rebuild automatically?  If y'all know anything about this, make a PR or log an issue, that way we can remove this entire documentation section which also means the pun will disappear as well.
+> The need to run `--rebuild` means that whenever you change or add command files, you'll have to rerun `--rebuild`.  Again, yes, it's less than ideal.  Maybe it's possible to hook into `npm run` and run rebuild automatically?  If y'all know anything about this, make a PR or log an issue, that way we can remove this entire documentation section which also means the joke will disappear as well.
 
 After running `--rebuild` if you open up your `package.json` you should see the `scripts: {}` section reflect what's in `.runaway/`.  
 
