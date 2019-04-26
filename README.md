@@ -80,18 +80,39 @@ This will create the `.runaway/` and `.runaway/.bin`directory and initialize a s
 
 # Documentation
 
-- Available Commands/Options
+- [Available Commands/Options](#available-commands-options)
 - [The `.runaway/` directory](#runaway-directory)
-- The `.runaway/.bin` directory
+- [The `.runaway/.bin` directory](#runaway-bin-directory)
 
-# .runaway/ directory
+
+
+## Available Commands/Options
+
+`—init`
+
+Initializes the basic directory structure and files for using *Runaway!*
+
+
+
+`—rebuild`
+
+Rebuilds the `script: {}` section of your `package.json` with what's discovered in the `.runaway/` directory.
+
+
+
+`—help`
+
+Does what you'd expect.
+
+
+
+## `.runaway/` directory
 
 *Runaway!* asks that you organize your command files in a `.runaway/` folder in the root of your project.
 
 Command files are simple.  At their minimum, they're expected to expose an object with a `command` property.
 
 ```  
-
 <your-project-directory>/
 		src/
     package.json
@@ -102,7 +123,6 @@ Command files are simple.  At their minimum, they're expected to expose an objec
 Presuming you want to make a command called `build` you'll now create a `build.js` file inside `.runaway/`  
 
 ```  
-
 <your-project-directory>/
     ...
 
@@ -121,8 +141,7 @@ In that `build.js` file, you want to export an object that has a string `command
 
 That's it.  Now we have to rebuild the `package.json`
 
-
-# Rebuilding `package.json`  
+## Rebuilding `package.json`  
 
 Unfortunately `package.json` is a JSON file and we can't actually crawl the `.runaway/` directory automatically.  If it were `package.js` we certainly could and that'd be great, but... Carry on.  
 
@@ -137,7 +156,8 @@ Now if you open up your `package.json` you should see the `scripts: {}` section 
 > Note that the name of the command that ends up in `package.json` matches the name of the file.  You're able to specify a specific name for the command with the `name` property.  
 
 
-# .runaway/.bin  
+
+## `.runaway/.bin` Directory
 
 Often you need to write small scripts that do fairly custom things in your build process.  There's no reason you couldn't just write a runaway command like:  
 
