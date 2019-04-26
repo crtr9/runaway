@@ -4,7 +4,7 @@ Foregoing the use of a full-featured task-runner for developing JS applications 
 
 **The Problem:** Any reasonably sized project ends up needing a lot of script commands to lint, build, transpile, optimize, etc., etc.  Having an undocumented list of commands in your `package.json` quickly becomes cumbersome.  
 
-**A Solution:** *Runaway!* is a very simple way to manage the list of scripts in your `package.json`.  It's not complex.  It's not something you couldn't build yourself in an hour or two.  But hey, it's here.  And I'm writing the documentation so you don't have to keep explaining it to your team mates.  
+**A Solution:** *Runaway!* is a very simple way to manage the list of scripts in your `package.json`.  It's not complex.  It's not something you couldn't build yourself in an hour or two.  But hey, it's here.  And I'm writing the documentation so you don't have to keep explaining it to your team.
 
 By organizing your script commands in individual `.js` files, you're able to provide code-level documentation on what's happening and why.  All *Runaway!* does is rewrite the `scripts: {}` section of your `package.json` based on the "command files" it finds.
 
@@ -13,24 +13,22 @@ By organizing your script commands in individual `.js` files, you're able to pro
 # Brief Example
 
 > Partial **package.json** prior to running *Runaway!*
-
-```json
-{
-  "scripts": {}
-}
-```
+> ```json
+> {
+>   "scripts": {}
+> }
+> ```
 
 (Yes, it's a bit of a contrived example, what with being empty.)
 
 
 
 > **./runaway/build.js**
-
-```javascript
-module.exports = {
-  command: "tsc src/main.js"
-};
-```
+> ```javascript
+> module.exports = {
+>   command: "tsc src/main.js"
+> };
+> ```
 
 
 
@@ -43,14 +41,13 @@ npx runaway --rebuild
 
 
 > Partial **package.json** after *Runningaway!* (See what I did there?)
-
-```json
-{
-  "scripts": {
-    "build": "tsc src/main.js"
-  }
-}
-```
+> ```json
+> {
+>   "scripts": {
+>     "build": "tsc src/main.js"
+>   }
+> }
+> ```
 
 
 
