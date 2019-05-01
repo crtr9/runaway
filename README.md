@@ -77,19 +77,19 @@ Also, you can go take a look in the `example/` directory for a slightly more inv
 
 ## Available Commands/Options
 
-`—init`
+`--init`
 
 Initializes the basic directory structure and files for using *Runaway!*
 
 
 
-`—rebuild`
+`--rebuild`
 
 Rebuilds the `script: {}` section of your `package.json` with what's discovered in the `.runaway/` directory.
 
 
 
-`—help`
+`--help`
 
 Does what you'd expect.
 
