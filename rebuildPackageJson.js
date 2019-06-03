@@ -19,6 +19,11 @@ module.exports = function() {
       return;
     }
 
+    // Skip files starting with "_"
+    if (path.basename(file.path).indexOf("_") === 0) {
+      return;
+    }
+
     // Let's see if the file we're dealing with is inside the .bin directory.
     let relativeDir = path.basename(
       path.relative(file.path, this.runawayBinDirectory)
@@ -85,7 +90,7 @@ module.exports = function() {
         )
       );
 
-      if (!fs.existsSync(scriptPath)) {
+      if (!fs.existsSync(scriptPath) && !fs.existsSync(scriptPath.split(".js")[0] + ".js")) {
         console.log(
           chalk.red(
             `Script ${path.relative(this.cwd, scriptPath)} does't exist!`
