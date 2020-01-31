@@ -6,7 +6,7 @@ Foregoing the use of a full-featured task-runner for developing JS applications 
 
 **A Solution:** *Runaway!* is a very simple way to manage the list of scripts in your `package.json`.  It's not complex.  It's not something you couldn't build yourself in an hour or two.  But hey, it's here.  And I'm writing the documentation so you don't have to keep explaining it to your team.
 
-By organizing your script commands in individual `.js` files, you're able to provide code-level documentation on what's happening and why.  All *Runaway!* does is rewrite the `scripts: {}` section of your `package.json` based on the "command files" it finds.
+By organizing your script com/mands in individual `.js` files, you're able to provide code-level documentation on what's happening and why.  All *Runaway!* does is rewrite the `scripts: {}` section of your `package.json` based on the "command files" it finds.
 
 
 
@@ -45,7 +45,7 @@ By organizing your script commands in individual `.js` files, you're able to pro
 # Getting Started
 
 ```  
-npm install --save-dev runaway  
+npm install --save-dev @crtr9/runaway  
 ```
 
 Or Yarn.  If you're using Yarn, I'm sure you already know what to do. :)
