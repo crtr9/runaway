@@ -1,3 +1,4 @@
+const normalizePath = require("normalize-path");
 const chalk = require("chalk");
 const fs = require("fs");
 const klawSync = require("klaw-sync");
@@ -82,13 +83,13 @@ module.exports = function() {
     // If the command starts with the runaway! flag, that means it's supposed to
     // reference a file in .runaway/.bin, so let's replace that accordingly.
     if (command.command.indexOf("runaway!") === 0) {
-      let scriptPath = path.relative(
+      let scriptPath = normalizePath(path.relative(
         this.cwd,
         path.join(
           this.runawayBinDirectory,
           command.command.split("runaway!")[1]
         )
-      );
+      ));
 
       if (!fs.existsSync(scriptPath) && !fs.existsSync(scriptPath.split(".js")[0] + ".js")) {
         console.log(
@@ -113,10 +114,10 @@ module.exports = function() {
 
       command.command =
         "node " +
-        path.join(
+        normalizePath(path.join(
           path.relative(this.cwd, this.runawayBinDirectory),
           command.command.split("runaway!")[1]
-        );
+        ));
     }
 
     console.log();
